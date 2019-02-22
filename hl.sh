@@ -39,7 +39,7 @@ function build_hl() {
 }
 
 function install_bin_hl() {
-    mkdir /home/pi/Half-Life
+    mkdir -p /home/pi/Half-Life
     cd /home/pi/Half-Life
     wget --no-check-certificate "https://github.com/HelloOO7/storage/raw/master/xash3d.tar" -O xash3d.tar
     tar -xvf xash3d.tar
@@ -48,7 +48,7 @@ function install_bin_hl() {
 
 function install_hl() {
     cd "$md_build"
-    mkdir /home/pi/Half-Life
+    mkdir -p /home/pi/Half-Life
     cp -Rvf hlsdk/build/cl_dll/client.so hlsdk/build/dlls/hl.so build/engine/libxash.so build/game_launch/xash3d build/mainui/libxashmenu.so /home/pi/Half-Life
 }
 
