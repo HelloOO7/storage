@@ -29,13 +29,13 @@ function sources_hl() {
 function build_hl() {
     cd "$md_build"
     mkdir build && cd build
-    sudo cmake -DXASH_NANOGL=yes -DXASH_VGUI=no -DXASH_GLES=yes -DHL_SDK_DIR=../hlsdk/ ..
-    sudo make
+    sudo cmake -DXASH_NANOGL=yes -DXASH_VGUI=no -DXASH_GLES=yes ..
+    sudo make -j2
     cd ..
     cd hlsdk
     mkdir build && cd build
     sudo cmake ..
-    sudo make
+    sudo make -j2
 }
 
 function install_bin_hl() {
@@ -53,7 +53,11 @@ function install_hl() {
 }
 
 function configure_hl() {
-    addPort "$md_id" "hl" "Half-Life" "cd /home/pi/Half-Life && ./xash3d -console"
+    addPort "$md_id" "hl" "Half-Life" "$md_inst/hl.sh"
+    cat > "$md_inst/hl.sh" << _EOF_
+LD_LIBRARY_PATH=/home/pi/Half-Life /home/pi/Half-Life/xash3d -console
+_EOF_
+    chmod +x "$md_inst/hl.sh"
 }
 
 function remove_hl() {
