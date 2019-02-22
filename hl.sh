@@ -15,7 +15,7 @@ rp_module_section="exp"
 rp_module_flags=""
 
 function depends_hl() {
-    local depends=(cmake cmake-curses-gui libsdl2-dev libsdl2-2.0-0 libsdl2-mixer-dev libsdl2-mixer-2.0-0 libsdl2-net-dev libsdl2-net-2.0-0 libsdl2-ttf-2.0-0 libsdl2-ttf-dev libsdl2-image-dev libsdl2-image-2.0-0)
+    local depends=(cmake libx11-dev libxext-dev libsdl2-dev libsdl2-2.0-0 libsdl2-mixer-dev libsdl2-mixer-2.0-0 libsdl2-net-dev libsdl2-net-2.0-0 libsdl2-ttf-2.0-0 libsdl2-ttf-dev libsdl2-image-dev libsdl2-image-2.0-0)
     isPlatform "rpi" && depends+=(libraspberrypi-dev)
     getDepends "${depends[@]}"
 }
